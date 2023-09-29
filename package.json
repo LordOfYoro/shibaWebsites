@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-minimal-ts",
+  "name": "les-shibas-d-inari",
   "version": "1.0.0",
   "private": true,
-  "description": "A Gatsby starter written in TypeScript with no plugins and a single welcome page.",
-  "author": "Jude Agboola",
+  "description": "les-shibas-d-inari",
+  "author": "Dylan Bogaert",
   "keywords": [
     "gatsby"
   ],
@@ -15,16 +15,33 @@
     "clean": "gatsby clean",
     "typecheck": "tsc --noEmit"
   },
-  "license": "0BSD",
   "dependencies": {
-    "gatsby": "^5.12.4",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.3",
+    "@mui/material": "^5.14.3",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/redux-persist": "^4.3.1",
+    "autoprefixer": "^10.4.14",
+    "gatsby": "^5.11.0",
+    "gatsby-plugin-image": "^3.11.0",
+    "gatsby-plugin-netlify": "^5.1.1",
+    "gatsby-plugin-postcss": "^6.11.0",
+    "gatsby-plugin-sharp": "^5.11.0",
+    "gatsby-source-filesystem": "^5.11.0",
+    "gatsby-transformer-sharp": "^5.11.0",
+    "postcss": "^8.4.27",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.2",
+    "redux-persist": "^6.0.0",
+    "tailwindcss": "^3.3.3"
   },
   "devDependencies": {
     "@types/node": "^20.3.3",
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
+    "@types/react-redux": "^7.1.25",
     "typescript": "^5.1.6"
   }
 }
