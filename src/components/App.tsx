@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 import Header from "./Header/Header.components";
 import Footer from "./Footer/Footer.components";

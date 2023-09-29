@@ -7,13 +7,11 @@ import { toggleTheme } from "../../store/theme/themeSlice";
 import {
   AppBar,
   FormControlLabel,
-  IconButton,
   Switch,
   Toolbar,
   Typography,
 } from "@mui/material";
 
-import MenuIcon from "@mui/icons-material/Menu";
 import NavigationDrawer from "../NavigationDrawer/NavigationDrawer.components";
 
 const Header: React.FC = () => {
@@ -35,15 +33,7 @@ const Header: React.FC = () => {
     <header>
       <AppBar position="static" className="bg-sky-700 dark:bg-slate-900">
         <Toolbar>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <NavigationDrawer />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Les shibas d'Inari
           </Typography>
@@ -61,7 +51,6 @@ const Header: React.FC = () => {
           />
         </Toolbar>
       </AppBar>
-      <NavigationDrawer />
     </header>
   );
 };
