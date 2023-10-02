@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { Link } from "react-router-dom";
 
 import {
   IconButton,
@@ -23,6 +24,23 @@ import MenuIcon from "@mui/icons-material/Menu";
 
 const NavigationDrawer: React.FC = () => {
   const themeMode = useSelector((state: RootState) => state.theme.mode);
+
+  const topLinks: LinkRepresentation[] = [
+    { url: "/", name: "Accueil", icon: <HomeIcon /> },
+    { url: "/shiba-story", name: "Histoire du shiba", icon: <MenuBookIcon /> },
+    { url: "/our-shiba", name: "Nos Shibas", icon: <PetsIcon /> },
+    { url: "/hints", name: "Conseils", icon: <MenuBookIcon /> },
+    {
+      url: "/reservation",
+      name: "Disponibilité / réservation",
+      icon: <PetsIcon />,
+    },
+  ];
+
+  const bottomLinks: LinkRepresentation[] = [
+    { url: "/FAQ", name: "FAQ", icon: <LiveHelpIcon /> },
+    { url: "/Contact", name: "Contact", icon: <MailIcon /> },
+  ];
 
   type Anchor = "top" | "left" | "bottom" | "right";
   const [state, setState] = React.useState({
@@ -49,44 +67,34 @@ const NavigationDrawer: React.FC = () => {
 
   const list = (anchor: Anchor) => (
     <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250}}
+      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
       role="presentation"
       onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <List>
-        {[
-          "Accueil",
-          "Histoire du shiba",
-          "Conseils",
-          "Nos Shibas",
-          "Disponibilité / réservation",
-        ].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index === 0 && <HomeIcon />}
-                {index === 1 && <MenuBookIcon />}
-                {index === 2 && <MenuBookIcon />}
-                {(index === 3 || index === 4) && <PetsIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {topLinks.map((linkRepresentation) => (
+          <Link key={linkRepresentation.name} to={linkRepresentation.url}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{linkRepresentation.icon}</ListItemIcon>
+                <ListItemText primary={linkRepresentation.name} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
       <Divider />
       <List>
-        {["FAQ", "Contact"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index === 0 && <LiveHelpIcon />}
-                {index === 1 && <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {bottomLinks.map((linkRepresentation) => (
+          <Link key={linkRepresentation.name} to={linkRepresentation.url}>
+            <ListItem disablePadding>
+              <ListItemButton>
+                <ListItemIcon>{linkRepresentation.icon}</ListItemIcon>
+                <ListItemText primary={linkRepresentation.name} />
+              </ListItemButton>
+            </ListItem>
+          </Link>
         ))}
       </List>
     </Box>
