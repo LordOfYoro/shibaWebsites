@@ -44,5 +44,12 @@
     "@types/react-dom": "^18.2.6",
     "@types/react-redux": "^7.1.25",
     "typescript": "^5.1.6"
+  },
+  "overrides": {
+    "react-server-dom-webpack@0.0.0-experimental-c8b778b7f-20220825": {
+      "react": "^18.2.0",
+      "description": "Usefull to avoid warning caused by gatsby dependencies",
+      "link": "https://github.com/gatsbyjs/gatsby/issues/37242#issuecomment-1348142685"
+    }
   }
 }
