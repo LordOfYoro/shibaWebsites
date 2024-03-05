@@ -1,6 +1,11 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+} from "react-router-dom";
 
 import Header from "./Header/Header.components";
 import Footer from "./Footer/Footer.components";
@@ -8,6 +13,7 @@ import Footer from "./Footer/Footer.components";
 import type { RootState } from "../store/store";
 import Home from "../pages/Home/Home.page";
 import ShibaStory from "../pages/ShibaStory/Shiba.page";
+import NotFoundPage from "../pages/NotFound.page";
 
 function BasicLayout() {
   return (
@@ -25,22 +31,22 @@ const App: React.FC = () => {
   React.useEffect(() => {
     if (themeMode === "dark") {
       document.documentElement.classList.add("dark");
-    }
-    if (themeMode === "light") {
+    } else {
       document.documentElement.classList.remove("dark");
     }
-  }, []);
+  }, [themeMode]);
 
   return (
-    <div className="dark:text-white">
-      <BrowserRouter>
+    <div className={themeMode === "dark" ? "dark:text-white" : ""}>
+      <Router>
         <Routes>
           <Route path="/" element={<BasicLayout />}>
             <Route path="/" element={<Home />} />
             <Route path="/shiba-story" element={<ShibaStory />} />
+            <Route element={<NotFoundPage />} />
           </Route>
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   );
 };
